@@ -39,16 +39,21 @@ var fightOrSkip = function() {
 return false;
 }
 
-
 var fight = function(enemy) {
+
+    var isPlayerTurn = true;
     
+    if(Math.random() > 0.5 ) {
+        isPlayerTurn = false;
+    }
+
     while(enemy.health > 0 && playerInfo.health > 0) {
     // Alert players that they are starting the round
-
-    if(fightOrSkip()) {
-        // if true, leave the fight by breaking the loop
-        break;
-    }
+    if(isPlayerTurn) { 
+        if(fightOrSkip()) {
+            // if true, leave the fight by breaking the loop
+            break;
+        }
    
 
 
@@ -74,7 +79,8 @@ var fight = function(enemy) {
     else {
         window.alert(enemy.name + " still has " + enemy.health + " health left.");
     }
-
+  }
+    else {  
     /////////////// PLAYERS HEALTH CALCULATIONS
     
     // Subtract the value of enemy.attack from the value playerInfo.health and us that result to update the vaule of the playerInfo.health variable
@@ -95,8 +101,13 @@ var fight = function(enemy) {
     else {
         window.alert(playerInfo.name + " still has " + playerInfo.health  + " health left.");
     }
+   }
+   // switch turn order for next round
+   isPlayerTurn = !isPlayerTurn;
   } //end of while loop
 }; // end of fight function
+
+
 
 
 // Random number function
