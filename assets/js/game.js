@@ -83,9 +83,21 @@ var randomNumber = function(min, max) {
     return value;
 }
 
+// get player name function
+var getPlayerName = function() {
+    var name = "";
+
+    while (name === "" || name === null) {
+        name = prompt("What is your robot's name");
+    }
+
+    console.log("Your robot's name is " + name);
+    return name;
+}
+
 // player info Object
 var playerInfo = {
-    name: window.prompt("What is your robot's name?"),
+    name:getPlayerName(),
     health: 100,
     attack: 10,
     money:10,
@@ -133,6 +145,8 @@ var enemyInfo = [
         attack: randomNumber(10,14)
     }
 ];
+
+
 
 
 //function to start a new game
